@@ -8,7 +8,7 @@ public class Coche{
     private int kilometros;
     private boolean nuevo = false;
 
-
+            
 public Coche(String matricula,String modelo,String marca,int kilometros){
     this.matricula=matricula;
     this.modelo=modelo;
@@ -61,7 +61,9 @@ public void viajar(){
         System.out.println("No puedes viajar 0 o menos kilometros");
         nuevoskilometros = entrada.nextInt();
     }
-    System.out.println("Tu coche ha pasado de tener " + kilometros + " a tener " + (kilometros + nuevoskilometros) + " kilometros.");
+    
+    System.out.println("Tu coche ha pasado de tener " + kilometros + " a tener " + (kilometros + nuevoskilometros ) + " kilometros.");
+    setKilometros(kilometros + nuevoskilometros);
     if(kilometros == 0 && nuevoskilometros == 0){
         nuevo = true;
     }

@@ -12,16 +12,14 @@ public class objetosCoche{
         System.out.println("");
         System.out.println(coche1);
         
-         coche2.setMatricula("434ZSD93");
-         System.out.println("");
+        coche2.setMatricula("434ZSD93");
+        System.out.println("");
         System.out.println(coche2);    
         coche3.setMatricula("123ABC12");
         System.out.println("");
         System.out.println(coche3); 
         coche1.viajar();   
-        coche1 = nuevo;
-        coche2 = nuevo;
-        
+        coche1.getKilometros();
         
         }
 }
