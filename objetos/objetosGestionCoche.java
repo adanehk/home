@@ -17,14 +17,35 @@ public class objetosGestionCoche{
         int deposito=entrada.nextInt();
         coche.setDeposito(deposito);
 
-        System.out.println("Cuantos L de gasolina gasta cada 100km:");
-        int consumo=entrada.nextInt();
-        coche.setConsumo(consumo);
-
+        
         System.out.println("Gasolina:");
         int gasolina=entrada.nextInt();
         coche.setGasolina(gasolina);
         System.out.println("\n" + "\n");
+       
+        System.out.println("¿Que quieres hacer?");
+        System.out.println("1. Viajar");
+        System.out.println("2. Repostar");
+        System.out.println("3. Salir");
+        int opcion = entrada.nextInt();
+       
+        do{
+
+             while(opcion < 0 || opcion > 4){
+             System.out.println("Esa no es una opcion valida");
+            }
+            switch(opcion){
+                case 1 -> coche.viajar();
+                case 2 -> coche.repostar();
+                case 3 -> System.exit(0);
+         }
+         System.out.println("¿Que quieres hacer?");
+         System.out.println("1. Viajar");
+         System.out.println("2. Repostar");
+         System.out.println("3. Salir");
+         opcion = entrada.nextInt();
+        }while(opcion != 3);
+        
         
         
     }
