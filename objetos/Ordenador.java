@@ -38,4 +38,8 @@ public void setRam(String ram){
 public void setPsu(String psu){
     this.psu=psu;
 }
+
+public String toString(){
+    return "GPU: " + this.getGpu() + "\n\n " + "CPU: " + this.getCpu() + "\n\n" + "RAM: " + this.getRam() + "\n\n" + "PSU: " + this.getPsu();
+}
 }
