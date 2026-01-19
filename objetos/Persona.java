@@ -1,22 +1,26 @@
 public class Persona{
-    private Persona[] titulares;
-    private int saldoInicial;
+    
+    private String nombre;
+    private String dni;
 
 
-public Persona(int saldoInicial,Persona[] titulares){
+public Persona(String nombre,String dni){
 
-    this.saldoInicial=saldoInicial;
-    this.titulares=titulares;
+    this.nombre=nombre;
+    this.dni=dni;
 }
 
-public Persona[]  gettitulares(){
-    return titulares;
+public String getnombre(){
+    return nombre;
 }
-public void setTitulares(Persona[] Titulares){
-    this.titulares= Titulares;
+public void setnombre(String nombre){
+    this.nombre= nombre;
 }
-public int getsaldoInicial(){
-    return saldoInicial;
+public void setdni(String dni){
+    this.dni= dni;
+}
+public String getdni(){
+    return dni;
 }
 
 }

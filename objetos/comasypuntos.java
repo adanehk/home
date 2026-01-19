@@ -1,0 +1,1 @@
+String nombresTitulares = ""; for (int i = 0; i < numTitulares; i++) { if (i == numTitulares - 1) { nombresTitulares += titulares[i].getNombre() + "."; } else { nombresTitulares += titulares[i].getNombre() + ", "; } };
