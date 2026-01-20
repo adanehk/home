@@ -2,7 +2,7 @@ public class Persona{
     
     private String nombre;
     private String dni;
-
+    
 
 public Persona(String nombre,String dni){
 
@@ -10,16 +10,16 @@ public Persona(String nombre,String dni){
     this.dni=dni;
 }
 
-public String getnombre(){
+public String getNombre(){
     return nombre;
 }
-public void setnombre(String nombre){
+public void setNombre(String nombre){
     this.nombre= nombre;
 }
-public void setdni(String dni){
+public void setDni(String dni){
     this.dni= dni;
 }
-public String getdni(){
+public String getDni(){
     return dni;
 }
 
