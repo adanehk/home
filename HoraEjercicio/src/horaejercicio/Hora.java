@@ -2,7 +2,7 @@ package horaejercicio;
 
 public class Hora {
 
-    private int hora = 0;
+    protected int hora = 0;
     private int minuto = 0;
 
     public Hora(int hora, int minuto) {
