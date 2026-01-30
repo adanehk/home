@@ -21,5 +21,8 @@ public class Coche extends VehiculoTerrestre{
     public void setNumPuertas(int numPuertas){
         this.numPuertas=numPuertas;
     }
+    public void Viajar(){
+        System.out.println("Viajo como un coche");
+    }
     
 }
