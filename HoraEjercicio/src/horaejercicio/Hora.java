@@ -2,7 +2,7 @@ package horaejercicio;
 
 public class Hora {
 
-    protected int hora = 0;
+    private int hora = 0;
     private int minuto = 0;
 
     public Hora(int hora, int minuto) {
@@ -22,7 +22,12 @@ public class Hora {
         }
         
     }
-
+    public int getMinutos(){
+        return minuto;
+    }
+    public int getHora(){
+        return hora;
+    }
     public void setMinuto(int minuto) {
         this.minuto = minuto;
         if (minuto < 0) {
@@ -33,6 +38,7 @@ public class Hora {
             System.out.println("El maximo es 59 animal, minutos = 59");
         }
     }
+    
 
     public void Hora(int horaX, int minutoX) {
         Hora hora = new Hora(14, 20);

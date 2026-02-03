@@ -11,13 +11,14 @@ public class Hora12 extends Hora {
     @Override
     public void setHora(int hora){
         
-        if(this.hora<1){
+        
+        if(hora<1){
             System.out.println("No se puede poner menos de 1 en la hora azbi, hora = 1");
-            this.hora = 1;
+            hora = 1;
         }
-        if (this.hora>12){
+        if (hora>12){
             System.out.println("No se puede poner mas de 12 en la hora hmar, hora = 12");
-            this.hora = 12;
+            hora = 12;
         }
     }
     
@@ -25,9 +26,11 @@ public class Hora12 extends Hora {
         public String toString(){
             String tAm;
             if(am = true){
-                
+                tAm = " am";
+            }else{
+                tAm = " pm";
             }
-            return"a";
+            return getHora() + tAm;
         }
     }
 
