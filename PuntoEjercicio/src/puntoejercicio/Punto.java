@@ -11,9 +11,9 @@ public class Punto {
     }
 
     public void desplaza(int dx) {
-        if (dx > 0) {
+       
             x += dx;
-        }
+        
     }
     public void desplaza(int dx,int dy) {
        
@@ -34,18 +34,12 @@ public class Punto {
         this.y=y;
     }
     public boolean estaEncima(Punto otroPunto){
-        boolean estaEncima = false;
-        if(otroPunto.getY()<y){
-             estaEncima = true;
-        }
-        return estaEncima;
+        return otroPunto.getY()<y;
     }
     public boolean estaALaIzquierda(Punto otroPunto){
-        boolean estaALaIzquierda = false;
-        if(otroPunto.getX()<x){
-             estaALaIzquierda = true;
-        }
-        return estaALaIzquierda;
+        
+        return otroPunto.getX()<x;
+             
     }
     public String toString(){
         return "x:" + x + " y:" + y;
