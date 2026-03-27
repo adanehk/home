@@ -255,6 +255,9 @@ public class Ventana extends javax.swing.JFrame {
     }//GEN-LAST:event_reinicioActionPerformed
 
     private void resulActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resulActionPerformed
+     int numero = Integer.parseInt(miniNum.getText());
+
+        
         miniNum.setText(miniNum.getText()+ num.getText());
         if(miniNum.getText().contains("+")){
             for(int i=0;i<miniNum.getText().length();i++){
@@ -263,6 +266,7 @@ public class Ventana extends javax.swing.JFrame {
                 }
             }
         }
+     
     }//GEN-LAST:event_resulActionPerformed
 
     private void unoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unoActionPerformed

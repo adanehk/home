@@ -1,0 +1,184 @@
+package retodiscos;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+import static retodiscos.main.stock;
+
+public class Tienda {
+
+    private String nombre;
+    private String direccion;
+    private double saldo = 0;
+    private double beneficio;
+    static Scanner entrada = new Scanner(System.in);
+    private ArrayList<Cliente> ventas = new ArrayList<>();
+
+    Empleado empleado = new Empleado(nombre, direccion, nombre, saldo);
+
+    public void addDisco(Disco disco) {
+        main.stock.add(disco);
+    }
+
+    public void quitarDisco(Disco disco) {
+        main.stock.remove(disco);
+    }
+
+    public void consultarDiscos(ArrayList<Disco> stock) {
+
+    int resList;
+
+    do {
+
+        System.out.println("\nActualmente hay " + Disco.getContador() + " discos\n");
+        System.out.println("1. Ver todos los discos");
+        System.out.println("2. Buscar un disco por nombre");
+        System.out.println("3. Salir");
+        System.out.print("Elige una opción: ");
+
+        resList = entrada.nextInt();
+        entrada.nextLine(); 
+
+        switch (resList) {
+
+            case 1:
+                for (int i = 0; i < stock.size(); i++) {
+                    System.out.println("\n" + stock.get(i));
+                }
+
+                System.out.println("\n¿Quieres buscar un disco por su nombre?");
+                System.out.println("1. Sí");
+                System.out.println("2. No");
+                int opcion = entrada.nextInt();
+                entrada.nextLine();
+
+                if (opcion == 2) {
+                    resList = 3; 
+                }
+                break;
+
+            case 2:
+                System.out.println("Introduce el título:");
+                String res = entrada.nextLine();
+
+                for (int i = 0; i < stock.size(); i++) {
+                    if (res.equalsIgnoreCase(stock.get(i).getTitulo())) {
+                        System.out.println("\n" + stock.get(i));
+                    }
+                }
+
+                System.out.println("\nPulsa Enter para volver al menú...");
+                entrada.nextLine();
+                break;
+
+            case 3:
+                System.out.println("Saliendo...");
+                break;
+
+            default:
+                System.out.println("Opción no válida.");
+        }
+
+    } while (resList != 3);
+}
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public double getBeneficio() {
+        return beneficio;
+    }
+
+    public void setBeneficio(double beneficio) {
+        this.beneficio = beneficio;
+    }
+    
+    public void venta (ArrayList<Disco> stock, Scanner input) {
+    boolean isNew = false;
+
+    System.out.println("Es un cliente Nuevo S/N: ");
+    String clienteNuevo = input.next();
+    if (clienteNuevo.equalsIgnoreCase("Si")) {
+        isNew = true;
+    }
+        
+    System.out.println("Ingrese el DNI: ");
+    String dni = input.next();
+
+    System.out.println("Ingrese el nombre del cliente: ");
+    String nombre = input.next();
+
+    System.out.println("Ingrese el apellido del cliente: ");
+    String apellido = input.next();
+
+    System.out.println("Ingrese el correo electronico: ");
+    String correo = input.next();
+
+
+    System.out.println("Coloca el nombre del disco: ");
+    input.next();
+    String identificadorNombre = input.next();
+    System.out.println("Coloca el autor: ");
+    String identificadorAutor = input.next();
+        
+    for (int i = 0; i < stock.size(); i++) {
+        if (identificadorNombre.equalsIgnoreCase(stock.get(i).getTitulo())
+            && identificadorAutor.equalsIgnoreCase(stock.get(i).getAutor())) {
+
+        double precio = stock.get(i).getPrecio();
+        saldo+= precio;
+        stock.remove(i);
+        }
+    }
+        
+        ventas.add(new Cliente(correo, isNew, nombre, apellido, dni));
+    }
+    
+    public void compra (ArrayList<Disco> stock, ArrayList<Empleado> empleado,Scanner input) {
+         System.out.print("Introduce el título: ");
+        String titulo = input.nextLine();
+
+        System.out.print("Introduce el autor: ");
+        String autor = input.nextLine();
+
+        System.out.print("Introduce la discográfica: ");
+        String discografica = input.nextLine();
+
+        System.out.print("Introduce el precio: ");
+        double precio = input.nextDouble();
+        input.nextLine(); // limpiar buffer
+
+        System.out.print("Introduce el género: ");
+        String genero = input.nextLine();
+
+        System.out.print("Introduce el número de canciones: ");
+        int numCanciones = input.nextInt();
+        input.nextLine(); // limpiar buffer
+
+        System.out.print("Introduce el formato (CD, Vinilo, Digital...): ");
+        String formato = input.nextLine();
+        
+        stock.add(new Disco(titulo, autor, discografica, precio, genero, numCanciones, formato, Empleado.buscarEmpleado("z35r32g", empleado)));
+        
+        saldo-= precio;
+    }
+        
+    public void listaVentas () {
+        System.out.println("Lista de ventas: ");
+        for (int i = 0; i < ventas.size(); i++) {
+            System.out.println(ventas.get(i).toString());
+        }
+    }
+}

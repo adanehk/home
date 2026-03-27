@@ -17,6 +17,13 @@ public class Ventana extends javax.swing.JFrame {
         mailRes.setText(listaPersonas.get(0).getMail());
         anterior.setEnabled(false);
         primero.setEnabled(false);
+        guardarEdad.setEnabled(false);
+        guardarNombre.setEnabled(false);
+        guardarMail.setEnabled(false);
+        guardarNombre.setVisible(false);
+        guardarEdad.setVisible(false);
+        guardarMail.setVisible(false);
+        guardar.setVisible(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -37,8 +44,6 @@ public class Ventana extends javax.swing.JFrame {
         añadir = new javax.swing.JButton();
         guardar = new javax.swing.JButton();
         eliminar = new javax.swing.JButton();
-        guardarEli = new javax.swing.JButton();
-        eliminarRes = new javax.swing.JTextField();
         editarNombre = new javax.swing.JButton();
         editarEdad = new javax.swing.JButton();
         editarMail = new javax.swing.JButton();
@@ -115,15 +120,6 @@ public class Ventana extends javax.swing.JFrame {
             }
         });
 
-        guardarEli.setText("Guardar");
-        guardarEli.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                guardarEliActionPerformed(evt);
-            }
-        });
-
-        eliminarRes.setEditable(false);
-
         editarNombre.setText("editar");
         editarNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -194,7 +190,7 @@ public class Ventana extends javax.swing.JFrame {
                                     .addComponent(guardar)
                                     .addComponent(añadir))
                                 .addGap(47, 47, 47)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(siguiente)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -206,11 +202,7 @@ public class Ventana extends javax.swing.JFrame {
                                 .addComponent(mailRes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(guardarEli)
-                                    .addComponent(eliminar))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(eliminarRes))))
+                                .addComponent(eliminar))))
                     .addComponent(editarMail)
                     .addComponent(editarNombre)
                     .addComponent(editarEdad))
@@ -254,20 +246,12 @@ public class Ventana extends javax.swing.JFrame {
                     .addComponent(siguiente)
                     .addComponent(primero)
                     .addComponent(ultimo))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(añadir)
-                            .addComponent(eliminar))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(guardar)
-                            .addComponent(guardarEli)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(eliminarRes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(14, 14, 14))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(añadir)
+                    .addComponent(eliminar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(guardar))
         );
 
         pack();
@@ -344,17 +328,23 @@ public class Ventana extends javax.swing.JFrame {
         nombreRes.setText("");
         edadRes.setText("");
         mailRes.setText("");
+        
+
+        nombreRes.setEditable(true);
+        edadRes.setEditable(true);
+        mailRes.setEditable(true);
+        guardar.setVisible(true);
+        
         primero.setEnabled(false);
         siguiente.setEnabled(false);
         anterior.setEnabled(false);
         ultimo.setEnabled(false);
         eliminar.setEnabled(false);
-        guardarEli.setEnabled(false);
-
-        nombreRes.setEditable(true);
-        edadRes.setEditable(true);
-        mailRes.setEditable(true);
-
+        
+        añadir.setEnabled(false);
+        editarNombre.setEnabled(false);
+        editarEdad.setEnabled(false);
+        editarMail.setEnabled(false);
 
     }//GEN-LAST:event_añadirActionPerformed
 
@@ -369,7 +359,12 @@ public class Ventana extends javax.swing.JFrame {
         anterior.setEnabled(true);
         ultimo.setEnabled(true);
         eliminar.setEnabled(true);
-        guardarEli.setEnabled(true);
+        
+        guardar.setVisible(false);
+        añadir.setEnabled(true);
+        editarNombre.setEnabled(true);
+        editarEdad.setEnabled(true);
+        editarMail.setEnabled(true);
 
         nombreRes.setText(listaPersonas.get(0).getNombre());
         edadRes.setText(listaPersonas.get(0).getEdad());
@@ -378,40 +373,22 @@ public class Ventana extends javax.swing.JFrame {
     }//GEN-LAST:event_guardarActionPerformed
 
     private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
-        nombreRes.setText("");
-        edadRes.setText("");
-        mailRes.setText("");
+       listaPersonas.remove(contador);
         
-        añadir.setEnabled(false);
-        guardar.setEnabled(false);
-        primero.setEnabled(false);
-        anterior.setEnabled(false);
-        siguiente.setEnabled(false);
-        ultimo.setEnabled(false);
-        eliminarRes.setEditable(true);
+       nombreRes.setText(listaPersonas.get(contador).getNombre());
+        edadRes.setText(listaPersonas.get(contador).getEdad());
+        mailRes.setText(listaPersonas.get(contador).getMail()); 
+        
     }//GEN-LAST:event_eliminarActionPerformed
-
-    private void guardarEliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarEliActionPerformed
-        int num = Integer.parseInt(eliminarRes.getText());
-        añadir.setEnabled(true);
-        guardar.setEnabled(true);
-        eliminarRes.setEditable(false);
-        eliminarRes.setText("");
-        listaPersonas.remove(num);
-        nombreRes.setText(listaPersonas.get(0).getNombre());
-        edadRes.setText(listaPersonas.get(0).getEdad());
-        mailRes.setText(listaPersonas.get(0).getMail());
-        primero.setEnabled(true);
-        anterior.setEnabled(true);
-        siguiente.setEnabled(true);
-        ultimo.setEnabled(true);
-    }//GEN-LAST:event_guardarEliActionPerformed
 
     private void editarEdadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarEdadActionPerformed
         edadRes.setText("");
         edadRes.setEditable(true);
         desactivarBotones();
         guardarEdad.setEnabled(true);
+        guardarEdad.setVisible(true);
+        
+
     }//GEN-LAST:event_editarEdadActionPerformed
 
     private void editarNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarNombreActionPerformed
@@ -419,16 +396,29 @@ public class Ventana extends javax.swing.JFrame {
         nombreRes.setEditable(true);
         desactivarBotones();
         guardarNombre.setEnabled(true);
+        guardarNombre.setVisible(true);
+
+
     }//GEN-LAST:event_editarNombreActionPerformed
 
     private void guardarNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarNombreActionPerformed
         activarBotones();
         listaPersonas.get(contador).setNombre(nombreRes.getText());
+        nombreRes.setEditable(false);
+        guardarNombre.setEnabled(false);
+        guardarEdad.setEnabled(false);
+        guardarMail.setEnabled(false);
+        guardarNombre.setVisible(false);
     }//GEN-LAST:event_guardarNombreActionPerformed
 
     private void guardarEdadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarEdadActionPerformed
         activarBotones();
         listaPersonas.get(contador).setEdad(edadRes.getText());
+        edadRes.setEditable(false);
+        guardarNombre.setEnabled(false);
+        guardarEdad.setEnabled(false);
+        guardarMail.setEnabled(false);
+        guardarEdad.setVisible(false);
     }//GEN-LAST:event_guardarEdadActionPerformed
 
     private void editarMailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarMailActionPerformed
@@ -436,11 +426,17 @@ public class Ventana extends javax.swing.JFrame {
         mailRes.setEditable(true);
         desactivarBotones();
         guardarMail.setEnabled(true);
+        guardarMail.setVisible(true);
     }//GEN-LAST:event_editarMailActionPerformed
 
     private void guardarMailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarMailActionPerformed
         activarBotones();
         listaPersonas.get(contador).setMail(mailRes.getText());
+        mailRes.setEditable(false);
+        guardarNombre.setEnabled(false);
+        guardarEdad.setEnabled(false);
+        guardarMail.setEnabled(false);
+        guardarMail.setVisible(false);
     }//GEN-LAST:event_guardarMailActionPerformed
 
     public void desactivarBotones() {
@@ -457,7 +453,7 @@ public class Ventana extends javax.swing.JFrame {
         añadir.setEnabled(false);
         guardar.setEnabled(false);
         eliminar.setEnabled(false);
-        guardarEli.setEnabled(false);
+        
     }
 
     public void activarBotones() {
@@ -474,7 +470,7 @@ public class Ventana extends javax.swing.JFrame {
         añadir.setEnabled(true);
         guardar.setEnabled(true);
         eliminar.setEnabled(true);
-        guardarEli.setEnabled(true);
+        
 
     }
 
@@ -487,10 +483,8 @@ public class Ventana extends javax.swing.JFrame {
     private javax.swing.JButton editarMail;
     private javax.swing.JButton editarNombre;
     private javax.swing.JButton eliminar;
-    private javax.swing.JTextField eliminarRes;
     private javax.swing.JButton guardar;
     private javax.swing.JButton guardarEdad;
-    private javax.swing.JButton guardarEli;
     private javax.swing.JButton guardarMail;
     private javax.swing.JButton guardarNombre;
     private javax.swing.JButton jButton3;

@@ -1,9 +1,11 @@
 package retodiscos;
 
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class Disco {
 
     private static int contador = 0;
-    private Cliente propietario;
     private String titulo;
     private String autor;
     private String discografica;
@@ -12,7 +14,9 @@ public class Disco {
     private int numCanciones;
     private String formato;
     private static int contadorDiscos = 0;
-    Disco[] discos = new Disco[1000];
+    private Cliente antiguoPropietario;
+    private static boolean nuevo;
+    private Empleado empleado;
 
     public Disco(String titulo, String autor, String discografica, double precio, String genero, int numCanciones, String formato) {
         this.titulo = titulo;
@@ -23,19 +27,29 @@ public class Disco {
         this.numCanciones = numCanciones;
         this.formato = formato;
         contador++;
-        for (int i = 0; i < 1; i++) {
-            discos[contadorDiscos] = this;
-            contadorDiscos++;
-        }
-
     }
 
-    public void setPropietario(Cliente propietario) {
-        this.propietario = propietario;
+    public Disco(String titulo, String autor, String discografica, double precio, String genero, int numCanciones, String formato, Cliente antiguoPropietario, Empleado empleado) {
+        this.titulo = titulo;
+        this.autor = autor;
+        this.discografica = discografica;
+        this.precio = precio;
+        this.genero = genero;
+        this.numCanciones = numCanciones;
+        this.formato = formato;
+        this.antiguoPropietario = antiguoPropietario;
+        this.empleado = empleado;
+    }
+    
+    public Disco(){}
+    
+    
+    public void setAntiguoPropietario(Cliente antiguoPropietario) {
+        this.antiguoPropietario = antiguoPropietario;
     }
 
-    public Cliente getPropietario() {
-        return propietario;
+    public Cliente getAntiguoPropietario() {
+        return antiguoPropietario;
     }
 
     public static int getContador() {
@@ -69,5 +83,42 @@ public class Disco {
     public String getTitulo() {
         return titulo;
     }
+
+    public static int getContadorDiscos() {
+        return contadorDiscos;
+    }
+    
+    public void eliminarDisco (ArrayList<Disco> stock, Scanner input) {
+    input.nextLine();
+
+
+    System.out.println("Coloca el nombre del disco: ");
+    String identificadorNombre = input.nextLine();
+    System.out.println("Coloca el autor: ");
+    String identificadorAutor = input.nextLine();
+
+
+    for (int i = 0; i < stock.size(); i++) {
+        if (identificadorNombre.equalsIgnoreCase(stock.get(i).getTitulo())
+                && identificadorAutor.equalsIgnoreCase(stock.get(i).getAutor())) {
+            stock.remove(i);
+        }
+    }
+
+        
+    }
+    
+       @Override
+public String toString() {
+    return  "\n---------------------------------- ALBUM ----------------------------------\n" +
+            "Titulo:        " + titulo + "\n" +
+            "Autor:         " + autor + "\n" +
+            "Discografica:  " + discografica + "\n" +
+            "Precio:        " + precio + " €\n" +
+            "Genero:        " + genero + "\n" +
+            "Canciones:     " + numCanciones + "\n" +
+            "Formato:       " + formato + "\n" +
+            "---------------------------------------------------------------------------\n";
+}
 
 }
