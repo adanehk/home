@@ -2,7 +2,8 @@
 package peliculas;
 
 import javax.swing.DefaultListModel;
-
+import java.sql.*;
+import static peliculas.Peliculas.pelis;
 
 public class Ventana extends javax.swing.JFrame {
     
@@ -51,6 +52,11 @@ public class Ventana extends javax.swing.JFrame {
         jScrollPane1.setViewportView(lista);
 
         nuevaPeli.setText("Nueva película");
+        nuevaPeli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nuevaPeliActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Filtrar por:");
 
@@ -157,6 +163,13 @@ public class Ventana extends javax.swing.JFrame {
        
        VSecundaria.generoVS.setText(p.getGenero());
     }//GEN-LAST:event_listaMouseClicked
+
+    private void nuevaPeliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevaPeliActionPerformed
+        NuevaPeli NuevaPeli = new NuevaPeli(this,true);
+        NuevaPeli.setVisible(true);
+        
+        
+    }//GEN-LAST:event_nuevaPeliActionPerformed
 
   
     public static void main(String args[]) {
