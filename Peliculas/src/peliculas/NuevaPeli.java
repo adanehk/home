@@ -6,7 +6,6 @@ package peliculas;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import static peliculas.Peliculas.pelis;
@@ -148,7 +147,7 @@ public class NuevaPeli extends javax.swing.JDialog {
         
          Peli pelicu = new Peli(NuevaPeli.tituloN.getText(),duracion,NuevaPeli.generoN.getText(),NuevaPeli.notaN.getValue(),NuevaPeli.sinopsisN.getText());
          pelis.add(pelicu);
-        ResultSet rs;
+        
         Connection conexion = null;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
